@@ -10,17 +10,43 @@ function selectOption(option) {
             displayCatHeart(); // Display the cat-heart.gif
         });
     } else if (option === 'no') {
-        // Change text on the "No" button to "You sure?"
-        document.getElementById('no-button').innerText = 'You sure?'; 
-        // Increase font size of "Yes" button
-        var yesButton = document.getElementById('yes-button');
-        var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
-        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by  * 2px
-        yesButton.style.fontSize = newSize + 'px';
+        // Call the function to handle "No" button clicks
+        handleNoClick();
     } else {
         // If neither "Yes" nor "No" was clicked, show an alert message
         alert('Invalid option!');
     }
+}
+
+// Messages for the "No" button
+const messages = [
+    "Are you sure?",
+    "Really sure??",
+    "Are you positive?",
+    "Pookie please...",
+    "Just think about it!",
+    "If you say no, I will be really sad...",
+    "I will be very sad...",
+    "I will be very very very sad...",
+    "Ok fine, I will stop asking...",
+    "Just kidding, say yes please! ❤️"
+];
+
+let messageIndex = 0; // Index for cycling through messages
+
+// Function to handle "No" button click
+function handleNoClick() {
+    const noButton = document.getElementById('no-button');
+    const yesButton = document.getElementById('yes-button');
+
+    // Change the text of the "No" button to the next message
+    noButton.textContent = messages[messageIndex];
+    messageIndex = (messageIndex + 1) % messages.length; // Loop through messages
+
+    // Increase the font size of the "Yes" button
+    const currentFontSize = window.getComputedStyle(yesButton).fontSize;
+    const newSize = parseFloat(currentFontSize) * 1.5; // Increase font size by 1.5x
+    yesButton.style.fontSize = `${newSize}px`;
 }
 
 // Function to flash rainbow colors and then execute a callback function
@@ -42,15 +68,10 @@ function flashRainbowColors(callback) {
 
 // Function to display the cat.gif initially
 function displayCat() {
-    // Get the container where the image will be displayed
     var imageContainer = document.getElementById('image-container');
-    // Create a new Image element for the cat
     var catImage = new Image();
-    // Set the source (file path) for the cat image
     catImage.src = 'catflower.gif'; // Assuming the cat image is named "cat.gif"
-    // Set alternative text for the image (for accessibility)
     catImage.alt = 'Cat';
-    // When the cat image is fully loaded, add it to the image container
     catImage.onload = function() {
         imageContainer.appendChild(catImage);
     };
@@ -58,20 +79,13 @@ function displayCat() {
 
 // Function to display the cat-heart.gif
 function displayCatHeart() {
-    // Clear existing content in the image container
     document.getElementById('image-container').innerHTML = '';
-    // Get the container where the image will be displayed
     var imageContainer = document.getElementById('image-container');
-    // Create a new Image element for the cat-heart
     var catHeartImage = new Image();
-    // Set the source (file path) for the cat-heart image
     catHeartImage.src = 'catheart.gif'; // Assuming the cat-heart image is named "cat-heart.gif"
-    // Set alternative text for the image (for accessibility)
     catHeartImage.alt = 'Cat Heart';
-    // When the cat-heart image is fully loaded, add it to the image container
     catHeartImage.onload = function() {
         imageContainer.appendChild(catHeartImage);
-        // Hide the options container
         document.getElementById('options').style.display = 'none';
     };
 }
