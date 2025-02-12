@@ -1,5 +1,22 @@
 // script.js
 
+// Array of messages for the "No" button
+const messages = [
+    "Are you sure?",
+    "Really sure??",
+    "Are you positive?",
+    "Pookie please...",
+    "Just think about it!",
+    "If you say no, I will be really sad...",
+    "I will be very sad...",
+    "I will be very very very sad...",
+    "Ok fine, I will stop asking...",
+    "Just kidding, say yes please! ❤️"
+];
+
+// Variable to keep track of the current message index
+let currentMessageIndex = 0;
+
 // Function to handle button click events
 function selectOption(option) {
     // Check which option was clicked
@@ -10,12 +27,16 @@ function selectOption(option) {
             displayCatHeart(); // Display the cat-heart.gif
         });
     } else if (option === 'no') {
-        // Change text on the "No" button to "You sure?"
-        document.getElementById('no-button').innerText = 'You sure?'; 
+        // Change text on the "No" button to the next message
+        document.getElementById('no-button').innerText = messages[currentMessageIndex]; 
+        
+        // Update the index for the next message
+        currentMessageIndex = (currentMessageIndex + 1) % messages.length; // Loop back to the start if at the end
+
         // Increase font size of "Yes" button
         var yesButton = document.getElementById('yes-button');
         var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
-        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by  * 2px
+        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by * 2
         yesButton.style.fontSize = newSize + 'px';
     } else {
         // If neither "Yes" nor "No" was clicked, show an alert message
