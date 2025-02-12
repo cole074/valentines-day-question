@@ -74,7 +74,6 @@ function flashRainbowColors(callback) {
     }, 2000); // Flash colors for 2 seconds
 }
 
-// Function to display the cat.gif initially
 // Function to display the cat-heart.gif and text when "Yes" is clicked
 function displayCatHeart() {
     // Clear existing content in the image container
@@ -86,9 +85,9 @@ function displayCatHeart() {
     // Create a new Image element for the cat-heart
     var catHeartImage = new Image();
     // Set the source (file path) for the cat-heart image
-    catHeartImage.src = 'catheart.gif'; // Assuming the cat-heart image is named "cat-heart.gif"
+    catHeartImage.src = 'catflower.gif'; // Assuming the cat image is named "catflower.gif"
     // Set alternative text for the image (for accessibility)
-    catHeartImage.alt = 'Cat Heart';
+    catHeartImage.alt = 'Cat Flower';
     
     // Create a new <p> element to display the text
     var textElement = document.createElement('p');
@@ -102,11 +101,11 @@ function displayCatHeart() {
     catHeartImage.onload = function() {
         imageContainer.appendChild(catHeartImage);  // Add the cat-heart image
         imageContainer.appendChild(textElement);   // Add the "I knew you would say yes!" text
-
         // Hide the options container
         document.getElementById('options').style.display = 'none';
     };
 }
+
 
 
 // Function to display the sad image when "No" is clicked
