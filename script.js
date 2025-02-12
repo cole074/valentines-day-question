@@ -1,7 +1,7 @@
 // script.js
 
-// Array of messages for the "No" button
-const messages = [
+// Array of phrases to cycle through
+const phrases = [
     "Are you sure?",
     "Really sure??",
     "Are you positive?",
@@ -14,8 +14,8 @@ const messages = [
     "Just kidding, say yes please! ❤️"
 ];
 
-// Variable to keep track of the current message index
-let currentMessageIndex = 0;
+// Variable to track the current phrase index
+let currentPhraseIndex = 0;
 
 // Function to handle button click events
 function selectOption(option) {
@@ -27,16 +27,16 @@ function selectOption(option) {
             displayCatHeart(); // Display the cat-heart.gif
         });
     } else if (option === 'no') {
-        // Change text on the "No" button to the next message
-        document.getElementById('no-button').innerText = messages[currentMessageIndex]; 
-        
-        // Update the index for the next message
-        currentMessageIndex = (currentMessageIndex + 1) % messages.length; // Loop back to the start if at the end
+        // Change text on the "No" button to the next phrase in the array
+        document.getElementById('no-button').innerText = phrases[currentPhraseIndex]; 
+
+        // Update the phrase index to cycle through
+        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
 
         // Increase font size of "Yes" button
         var yesButton = document.getElementById('yes-button');
         var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
-        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by * 2
+        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by *2px
         yesButton.style.fontSize = newSize + 'px';
     } else {
         // If neither "Yes" nor "No" was clicked, show an alert message
