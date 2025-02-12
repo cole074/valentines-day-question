@@ -16,6 +16,7 @@ const phrases = [
 
 // Variable to track the current phrase index
 let currentPhraseIndex = 0;
+let finishedCycling = false; // Track if the cycle should stop
 
 // Function to handle button click events
 function selectOption(option) {
@@ -24,23 +25,32 @@ function selectOption(option) {
         // Flash rainbow colors
         flashRainbowColors(function() {
             document.getElementById('question').style.display = 'none'; // Hide the question
-            displayCatHeart(); // Display the cat-heart.gif
+            displayCatHeart(); // Display the cat-heart.gif instantly
         });
     } else if (option === 'no') {
-        // Change text on the "No" button to the next phrase in the array
-        document.getElementById('no-button').innerText = phrases[currentPhraseIndex]; 
+        // Check if the cycle is finished, if not, continue cycling through phrases
+        if (!finishedCycling) {
+            // Change text on the "No" button to the next phrase in the array
+            document.getElementById('no-button').innerText = phrases[currentPhraseIndex];
 
-        // Update the phrase index to cycle through
-        currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
+            // Update the phrase index to cycle through
+            currentPhraseIndex = (currentPhraseIndex + 1) % phrases.length;
 
-        // Increase font size of "Yes" button
-        var yesButton = document.getElementById('yes-button');
-        var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
-        var newSize = parseFloat(currentFontSize) * 2; // Increase font size by *2px
-        yesButton.style.fontSize = newSize + 'px';
+            // Increase font size of "Yes" button
+            var yesButton = document.getElementById('yes-button');
+            var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
+            var newSize = parseFloat(currentFontSize) * 2; // Increase font size by *2px
+            yesButton.style.fontSize = newSize + 'px';
 
-        // Change the image to sadgif when "No" is clicked
-        displaySadGif();
+            // Change the image to sadgif when "No" is clicked
+            displaySadGif();
+        }
+
+        // Stop cycling after the last phrase
+        if (currentPhraseIndex === phrases.length - 1) {
+            finishedCycling = true;
+            document.getElementById('no-button').style.display = 'none'; // Hide the "No" button
+        }
     } else {
         // If neither "Yes" nor "No" was clicked, show an alert message
         alert('Invalid option!');
