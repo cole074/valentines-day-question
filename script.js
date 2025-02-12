@@ -16,7 +16,7 @@ const phrases = [
 
 // Variable to track the current phrase index
 let currentPhraseIndex = 0;
-// let finishedCycling = false; // Track if the cycle should stop
+ let finishedCycling = false; // Track if the cycle should stop
 
 // Function to handle button click events
 function selectOption(option) {
