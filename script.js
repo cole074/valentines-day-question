@@ -2,16 +2,16 @@
 
 // Array of phrases to cycle through
 const phrases = [
-    "Are you sure?",
-    "Really sure??",
-    "Are you positive?",
-    "Pookie please...",
-    "Just think about it!",
-    "If you say no, I will be really sad...",
-    "I will be very sad...",
-    "I will be very very very sad...",
-    "Ok fine, I will stop asking...",
-    "Just kidding, say yes please! ❤️"
+    "are you sure?",
+    "are you really sure??",
+    "lah:>",
+    "susunugin ko bahay nyo sige",
+    "please baby T^T",
+    "I will be sad if you say no",
+    "sad everday everynight",
+    "may iba ka na ba?",
+    "mamalasin ka kapag hindi ka nag yes!",
+    "joke, iloveyou ^^"
 ];
 
 // Variable to track the current phrase index
