@@ -38,6 +38,9 @@ function selectOption(option) {
         var currentFontSize = window.getComputedStyle(yesButton).getPropertyValue('font-size');
         var newSize = parseFloat(currentFontSize) * 2; // Increase font size by *2px
         yesButton.style.fontSize = newSize + 'px';
+
+        // Change the image to sadgif when "No" is clicked
+        displaySadGif();
     } else {
         // If neither "Yes" nor "No" was clicked, show an alert message
         alert('Invalid option!');
@@ -77,7 +80,25 @@ function displayCat() {
     };
 }
 
-// Function to display the cat-heart.gif
+// Function to display the sad image when "No" is clicked
+function displaySadGif() {
+    // Clear existing content in the image container
+    document.getElementById('image-container').innerHTML = '';
+    // Get the container where the image will be displayed
+    var imageContainer = document.getElementById('image-container');
+    // Create a new Image element for the sad gif
+    var sadImage = new Image();
+    // Set the source (file path) for the sad image
+    sadImage.src = 'cutecat.gif'; // Assuming the sad image is named "sadgif.gif"
+    // Set alternative text for the image (for accessibility)
+    sadImage.alt = 'Sad Cat';
+    // When the sad image is fully loaded, add it to the image container
+    sadImage.onload = function() {
+        imageContainer.appendChild(sadImage);
+    };
+}
+
+// Function to display the cat-heart.gif when "Yes" is clicked
 function displayCatHeart() {
     // Clear existing content in the image container
     document.getElementById('image-container').innerHTML = '';
@@ -99,3 +120,4 @@ function displayCatHeart() {
 
 // Display the cat.gif initially
 displayCat();
+
