@@ -49,13 +49,16 @@ function selectOption(option) {
         // Stop cycling after the last phrase
         if (currentPhraseIndex === phrases.length - 1) {
             finishedCycling = true;
-            document.getElementById('no-button').style.display = 'none'; // Hide the "No" button
+            // Hide the "No" button after the last phrase
+            document.getElementById('no-button').style.display = 'none'; 
+            // You could also hide it earlier if needed
         }
     } else {
         // If neither "Yes" nor "No" was clicked, show an alert message
         alert('Invalid option!');
     }
 }
+
 
 // Function to flash rainbow colors and then execute a callback function
 function flashRainbowColors(callback) {
