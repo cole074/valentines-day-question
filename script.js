@@ -9,9 +9,9 @@ const phrases = [
     "please baby T^T",
     "I will be sad if you say no",
     "Sad everday everynight",
-    "May iba ka na ba?",
-    "Mamalasin ka kapag hindi ka nag yes!",
-    "Joke, iloveyou ^^"
+    "Wifey naman eh!",
+    "madapa ka sana bukas",
+    "joke, iloveyou!"
 ];
 
 // Variable to track the current phrase index
